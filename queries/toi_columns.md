@@ -1,0 +1,2 @@
+- TOI 欄位定義： https://exoplanetarchive.ipac.caltech.edu/docs/API_TOI_columns.html
+- TOI 緣起與流程（TEV）： https://tess.mit.edu/toi-releases/tess-exoplanet-vetter-tev-website/

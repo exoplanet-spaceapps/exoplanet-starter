@@ -3,6 +3,14 @@ Universal Data Loader for 02_bls_baseline.ipynb
 适用于 Google Colab 和本地环境的数据加载模块
 """
 
+# Fix UTF-8 encoding for Windows environment
+import sys
+import io
+if sys.platform == 'win32':
+    # Reconfigure stdout/stderr to use UTF-8 encoding
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
+
 import pandas as pd
 from pathlib import Path
 import subprocess

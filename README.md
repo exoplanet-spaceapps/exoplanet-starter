@@ -48,15 +48,13 @@ spaceapps-exoplanet-claude-starter/
 
 ## 🚀 **一鍵開啟 Colab**
 
-將 `YOUR_USERNAME/YOUR_REPO` 換成你的 GitHub 倉庫路徑：
-
 | Notebook | 說明 | Colab 連結 |
 |----------|------|-----------|
-| 01_tap_download | TAP 資料下載（TOI + Kepler EB）| [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/notebooks/01_tap_download.ipynb) |
-| 02_bls_baseline | BLS/TLS 基線分析與可視化 | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/notebooks/02_bls_baseline.ipynb) |
-| 03_injection_train | 合成注入 + 監督學習訓練 | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/notebooks/03_injection_train.ipynb) |
-| 04_newdata_inference | 新資料端到端推論 | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/notebooks/04_newdata_inference.ipynb) |
-| 05_metrics_dashboard | 評估指標與模型比較 | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/notebooks/05_metrics_dashboard.ipynb) |
+| 01_tap_download | TAP 資料下載（TOI + Kepler EB）| [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/exoplanet-spaceapps/exoplanet-starter/blob/main/notebooks/01_tap_download.ipynb) |
+| 02_bls_baseline | BLS/TLS 基線分析與可視化 | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/exoplanet-spaceapps/exoplanet-starter/blob/main/notebooks/02_bls_baseline.ipynb) |
+| 03_injection_train | 合成注入 + 監督學習訓練 | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/exoplanet-spaceapps/exoplanet-starter/blob/main/notebooks/03_injection_train.ipynb) |
+| 04_newdata_inference | 新資料端到端推論 | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/exoplanet-spaceapps/exoplanet-starter/blob/main/notebooks/04_newdata_inference.ipynb) |
+| 05_metrics_dashboard | 評估指標與模型比較 | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/exoplanet-spaceapps/exoplanet-starter/blob/main/notebooks/05_metrics_dashboard.ipynb) |
 
 ### 範例連結（可直接測試）
 使用預設倉庫路徑的可用連結：

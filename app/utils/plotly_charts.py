@@ -9,10 +9,10 @@ from sklearn.metrics import (
     roc_curve,
     precision_recall_curve,
     confusion_matrix,
-    calibration_curve,
     roc_auc_score,
     average_precision_score
 )
+from sklearn.calibration import calibration_curve
 from typing import Dict, List, Any, Optional
 from pathlib import Path
 

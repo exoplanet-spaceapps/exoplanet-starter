@@ -1,0 +1,12 @@
+# Minimal; Colab notebooks會自行處理版本/衝突
+lightkurve
+astroquery
+numpy
+scipy
+pandas
+matplotlib
+scikit-learn
+joblib
+requests
+transitleastsquares
+wotan

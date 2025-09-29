@@ -33,12 +33,84 @@
 2. 在 README 的 Colab 連結把 `<USER>/<REPO>` 換成你的倉庫路徑。
 3. 在 Colab 開啟該 Notebook，依第一格安裝指令執行。
 
-## 待辦清單（Claude 可以逐項完成）
-- [ ] 實作 `app/bls_features.py` 中 `run_bls()`、`extract_features()`。
-- [ ] 實作 `app/injection.py` 中 `inject_box_transit()` 與資料產生器。
-- [ ] 在 `train.py` 完成 **LogReg/XGBoost** 訓練 + **Platt/Isotonic** 校準、持久化。
-- [ ] 在 `infer.py` 完成 **TIC -> MAST 下載 -> BLS/TLS -> 特徵 -> 機率** 的流水線。
-- [ ] 擴增 `DATASETS.md` 的引用範例與 TAP 查詢樣板。
+## 🎯 **當前專案狀態 (2025-01-29)**
+
+### ✅ **已完成** (Phase 1-2)
+- [x] **01_tap_download.ipynb**: NASA 真實資料下載與 GitHub 推送系統 ✅
+  - 解決 Git LFS 追蹤錯誤問題
+  - 修復 GitHub 推送目錄創建問題
+  - 下載完整 TOI + KOI False Positives 資料集
+  - 建立 `supervised_dataset.csv` 主訓練資料
+- [x] **02_bls_baseline.ipynb**: 優化與準備完成 ✅
+  - 完整錯誤處理和 fallback 機制
+  - NumPy 2.0 相容性修復
+  - 自動資料載入系統
+
+### 📋 **下一步** (Phase 3 - 即將開始)
+- [ ] **執行 02_bls_baseline.ipynb**: BLS/TLS 基線分析
+  - 執行 3-5 個目標的光曲線分析
+  - 生成 `bls_tls_features.csv` 特徵檔案
+  - 推送分析結果到 GitHub
+
+### 📅 **後續階段** (Phase 4-6)
+- [ ] **03_injection_train.ipynb**: 監督學習訓練
+- [ ] **04_newdata_inference.ipynb**: 新資料推論管線
+- [ ] **05_metrics_dashboard.ipynb**: 評估儀表板
+
+## 🔧 **關鍵技術解決方案記錄**
+
+### 1. Git LFS 追蹤錯誤修復 ✅
+```bash
+# 問題: Command '['git', 'lfs', 'track', '*.csv']' returned non-zero exit status 128
+# 解決: 完整 Git 倉庫初始化流程
+subprocess.run(['git', 'init'], check=True)
+subprocess.run(['apt-get', 'install', '-y', '-qq', 'git-lfs'], check=True)
+subprocess.run(['git', 'lfs', 'install', '--skip-repo'], capture_output=True)
+```
+
+### 2. GitHub 推送目錄缺失修復 ✅
+```python
+# 問題: ❌ data 目錄不存在
+# 解決: 自動目錄創建機制
+essential_dirs = ['data', 'notebooks']
+for dir_name in essential_dirs:
+    if not dir_path.exists():
+        dir_path.mkdir(parents=True, exist_ok=True)
+```
+
+### 3. NumPy 2.0 相容性修復 ✅
+```bash
+# 問題: transitleastsquares 等套件不相容 NumPy 2.0
+# 解決: 強制使用相容版本
+pip install -q numpy==1.26.4 scipy'<1.13' astropy
+```
+
+## 📋 **繼續開發檢查清單**
+
+### 準備工作:
+- [x] 確認 `PROJECT_MEMORY.md` 已建立 ✅
+- [x] 確認 `data/supervised_dataset.csv` 已存在 ✅
+- [ ] 準備 GitHub Token (如需推送)
+
+### 執行順序:
+1. **02_bls_baseline.ipynb** (下一步):
+   - 執行 Cell 4 → 重啟 Runtime
+   - 從 Cell 6 開始執行
+2. **03_injection_train.ipynb**: 載入 BLS/TLS 特徵訓練模型
+3. **04_newdata_inference.ipynb**: 測試推論管線
+4. **05_metrics_dashboard.ipynb**: 生成評估報告
+
+### 重要文件:
+- **PROJECT_MEMORY.md**: 完整專案記憶與技術解決方案 🧠
+- **CLAUDE.md**: 本開發指引文件
+- **data/supervised_dataset.csv**: 主訓練資料集 (2000+ 筆)
+
+## 待辦清單（舊版 - 已更新）
+~~實作 `app/bls_features.py` 中 `run_bls()`、`extract_features()`~~ → 改為 Notebook-based 開發
+~~實作 `app/injection.py` 中 `inject_box_transit()` 與資料產生器~~ → 整合至 03_injection_train.ipynb
+~~在 `train.py` 完成 **LogReg/XGBoost** 訓練~~ → 整合至 03_injection_train.ipynb
+~~在 `infer.py` 完成推論流水線~~ → 整合至 04_newdata_inference.ipynb
+~~擴增 `DATASETS.md`~~ → 已完成資料來源文檔
 
 
 # Claude Code Configuration - SPARC Development Environment

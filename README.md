@@ -376,3 +376,7 @@ lc_flat = lc_clean.flatten(window_length=401)
 ## 授權
 - 程式碼：Apache License 2.0（見 LICENSE）
 - 資料：依各資料源條款（NASA/MAST/Exoplanet Archive/HLSP 等）使用與引用；在論文/專案頁逐條標註來源
+
+
+### 致謝
+感謝 Rosetta Li 你有看到這裡，好啦對不起，這次比賽我會努力ㄉ，不會馬虎！祝你 Re-offer 成功。

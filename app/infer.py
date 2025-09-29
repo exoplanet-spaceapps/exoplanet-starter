@@ -17,7 +17,7 @@ except ImportError:
     lk = None
 
 from .bls_features import run_bls, extract_features
-from .utils import download_lightcurve_data
+# Note: Light curve download is handled directly by lightkurve in predict_from_tic()
 
 
 def predict_from_tic(
@@ -135,12 +135,34 @@ def predict_from_tic(
             print("   載入模型...")
 
         model = joblib.load(model_path)
-        scaler = joblib.load(scaler_path)
 
-        with open(feature_schema_path, 'r') as f:
-            schema = json.load(f)
+        # Handle scaler - it might be in the pipeline or separate
+        if scaler_path and Path(scaler_path).exists():
+            scaler = joblib.load(scaler_path)
+        elif hasattr(model, 'named_steps') and 'scaler' in model.named_steps:
+            scaler = model.named_steps['scaler']
+            if verbose:
+                print("   使用 pipeline 中的標準化器")
+        else:
+            scaler = None
+            if verbose:
+                print("   ⚠️ 未找到標準化器，跳過特徵標準化")
 
-        feature_order = schema['feature_order']
+        # Handle feature schema
+        if feature_schema_path and Path(feature_schema_path).exists():
+            with open(feature_schema_path, 'r') as f:
+                schema = json.load(f)
+            feature_order = schema['feature_order']
+        else:
+            # Use default feature order
+            feature_order = [
+                'bls_period', 'bls_duration', 'bls_depth', 'bls_snr', 'bls_power',
+                'odd_even_mismatch', 'secondary_power_ratio', 'harmonic_delta_chisq',
+                'periodicity_strength', 'transit_symmetry', 'odd_even_depth_diff',
+                'phase_coverage', 'ingress_egress_asymmetry', 'v_shape_indicator'
+            ]
+            if verbose:
+                print(f"   使用預設特徵順序 ({len(feature_order)} 個特徵)")
 
         # 7. 準備特徵向量
         feature_vector = []
@@ -153,7 +175,10 @@ def predict_from_tic(
         X = np.array(feature_vector).reshape(1, -1)
 
         # 8. 標準化和預測
-        X_scaled = scaler.transform(X)
+        if scaler is not None:
+            X_scaled = scaler.transform(X)
+        else:
+            X_scaled = X
 
         # 獲取預測機率
         if hasattr(model, 'predict_proba'):
@@ -379,10 +404,10 @@ def save_inference_results(
         # 儲存元資料
         import time
         metadata = {
-            'n_targets': len(results_df),
-            'n_success': results_df['success'].sum() if 'success' in results_df else 0,
+            'n_targets': int(len(results_df)),
+            'n_success': int(results_df['success'].sum()) if 'success' in results_df else 0,
             'inference_date': time.strftime("%Y-%m-%d %H:%M:%S"),
-            'high_confidence': len(results_df[results_df['probability'] > 0.8]) if 'probability' in results_df else 0
+            'high_confidence': int(len(results_df[results_df['probability'] > 0.8])) if 'probability' in results_df else 0
         }
 
         metadata_path = output_path.parent / f"{output_path.stem}_metadata.json"

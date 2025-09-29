@@ -78,8 +78,8 @@ def create_exoplanet_pipeline(
             subsample=0.8,
             colsample_bytree=0.8,
             random_state=random_state,  # Reproducibility
-            eval_metric='aucpr',  # PR-AUC (better for imbalanced data)
-            early_stopping_rounds=10
+            eval_metric='aucpr'  # PR-AUC (better for imbalanced data)
+            # early_stopping_rounds removed - not compatible with pipeline without eval_set
         ))
     ])
 

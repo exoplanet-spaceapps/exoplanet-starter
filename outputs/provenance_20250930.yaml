@@ -1,0 +1,27 @@
+data_source:
+  file: data/toi.csv
+  n_samples: 7699
+  query_date: '2025-09-30T05:56:36.676393'
+  url: https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=TOI
+execution_time_seconds: 0.026299
+hardware:
+  cuda_version: '12.4'
+  gpu: NVIDIA GeForce RTX 3050 Laptop GPU
+model:
+  features:
+  - toi
+  - tid
+  - period
+  - depth
+  - duration
+  - kepid
+  path: models/xgboost_pipeline_cv.joblib
+  type: XGBClassifier with preprocessing pipeline
+  version: xgboost_pipeline_cv_v1.0
+results:
+  high_confidence: 3
+  low_confidence: 7696
+  medium_confidence: 0
+  n_candidates: 7699
+run_id: '20250930_055636'
+timestamp: '2025-09-30T05:56:36.676377'

@@ -1,7 +1,20 @@
-# Space Apps 2025 — A World Away (Exoplanet AI) · Starter Kit
+# 🌟 Space Apps 2025 — A World Away (Exoplanet AI) · Starter Kit
 
-> 快速打造：**BLS/TLS 基線 + 輕量 ML 訓練（合成注入/TOI 監督） + 新資料一鍵推論 + 互動可視化**。  
-> 針對 **NASA Space Apps 2025** 挑戰「**A World Away — Hunting for Exoplanets with AI**」。
+[![NASA Space Apps 2025](https://img.shields.io/badge/NASA%20Space%20Apps-2025-blue?style=for-the-badge&logo=nasa)](https://www.spaceappschallenge.org/)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue?style=for-the-badge&logo=python)](https://www.python.org/)
+[![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)](https://jupyter.org/)
+[![Colab](https://img.shields.io/badge/Colab-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=white)](https://colab.research.google.com/)
+[![License](https://img.shields.io/badge/License-Apache%202.0-green?style=for-the-badge)](LICENSE)
+
+[![TESS Data](https://img.shields.io/badge/TESS-Data-orange?style=flat-square)](https://tess.mit.edu/)
+[![Kepler Data](https://img.shields.io/badge/Kepler-Data-red?style=flat-square)](https://kepler.nasa.gov/)
+[![NASA Archive](https://img.shields.io/badge/NASA-Exoplanet%20Archive-blue?style=flat-square)](https://exoplanetarchive.ipac.caltech.edu/)
+[![BLS Algorithm](https://img.shields.io/badge/Algorithm-BLS%2FTLS-green?style=flat-square)](https://en.wikipedia.org/wiki/Box_least_squares)
+[![XGBoost](https://img.shields.io/badge/ML-XGBoost-yellow?style=flat-square)](https://xgboost.readthedocs.io/)
+
+> 🚀 **AI-powered exoplanet detection system** using NASA TESS & Kepler data
+> 快速打造：**BLS/TLS 基線 + 輕量 ML 訓練（合成注入/TOI 監督） + 新資料一鍵推論 + 互動可視化**
+> 針對 **NASA Space Apps 2025** 挑戰「**A World Away — Hunting for Exoplanets with AI**」
 
 ---
 

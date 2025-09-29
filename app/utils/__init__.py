@@ -3,14 +3,21 @@ Utility modules for exoplanet detection evaluation
 """
 
 from .latency_metrics import LatencyTracker, calculate_latency_stats, plot_latency_histogram
-from .plotly_charts import (
-    create_interactive_roc_curve,
-    create_interactive_pr_curve,
-    create_interactive_confusion_matrix,
-    create_interactive_feature_importance,
-    create_interactive_calibration_curve,
-    create_metrics_dashboard
-)
+
+# Optional imports - require additional packages
+try:
+    from .plotly_charts import (
+        create_interactive_roc_curve,
+        create_interactive_pr_curve,
+        create_interactive_confusion_matrix,
+        create_interactive_feature_importance,
+        create_interactive_calibration_curve,
+        create_metrics_dashboard
+    )
+    _PLOTLY_AVAILABLE = True
+except ImportError:
+    # Plotly not installed - interactive visualizations unavailable
+    _PLOTLY_AVAILABLE = False
 from .output_schema import (
     create_candidate_dataframe,
     export_candidates_csv,

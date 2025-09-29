@@ -31,15 +31,22 @@ from .latency_metrics import (
     calculate_latency_stats,
     plot_latency_histogram
 )
-from .plotly_viz import (
-    create_interactive_roc_curve,
-    create_interactive_pr_curve,
-    create_interactive_confusion_matrix,
-    create_interactive_feature_importance,
-    create_interactive_calibration_curve,
-    create_metrics_dashboard,
-    export_to_html
-)
+
+# Optional imports - require additional packages
+try:
+    from .plotly_viz import (
+        create_interactive_roc_curve,
+        create_interactive_pr_curve,
+        create_interactive_confusion_matrix,
+        create_interactive_feature_importance,
+        create_interactive_calibration_curve,
+        create_metrics_dashboard,
+        export_to_html
+    )
+    _PLOTLY_AVAILABLE = True
+except ImportError:
+    # Plotly not installed - interactive visualizations unavailable
+    _PLOTLY_AVAILABLE = False
 
 __all__ = [
     # Reproducibility

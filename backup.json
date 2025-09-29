@@ -1,0 +1,40 @@
+{
+  "default": [
+    {
+      "key": "bls_baseline_implementation",
+      "value": "Completed Phase 1: BLS/TLS baseline with 2 TIC + 1 KIC, detrending, visualizations, 0.5-20d search, comparison analysis",
+      "namespace": "default",
+      "timestamp": 1759151688036
+    },
+    {
+      "key": "phase2_complete",
+      "value": "Phase 2 完成: 實作合成注入器、BLS特徵萃取、XGBoost+Isotonic校準訓練管線",
+      "namespace": "default",
+      "timestamp": 1759152166500
+    },
+    {
+      "key": "exoplanet-toi-mapping",
+      "value": "TOI table uses pl_* prefix: pl_orbper=period(days), pl_trandep=depth(ppm), pl_trandurh=duration(hours,need/24), pl_rade=radius",
+      "namespace": "default",
+      "timestamp": 1759162841466
+    },
+    {
+      "key": "exoplanet-koi-replacement",
+      "value": "Villanova EB catalog down(2025), use KOI False Positives: query cumulative table WHERE koi_disposition='FALSE POSITIVE'",
+      "namespace": "default",
+      "timestamp": 1759162855367
+    },
+    {
+      "key": "exoplanet-data-stats",
+      "value": "Total:11979 samples, Positive:5944(49.6%), Negative:6035(50.4%), TOI_FP:1196, KOI_FP:4839, period:99.2%, depth:97.9%, duration:100%",
+      "namespace": "default",
+      "timestamp": 1759162868397
+    },
+    {
+      "key": "bls-notebook-fixes",
+      "value": "Fixed: 1.Load supervised_dataset.csv instead of hardcoded targets 2.Use sample_targets from TOI/KOI data 3.Extract BLS/TLS features to bls_tls_features.csv 4.Add feature importance analysis",
+      "namespace": "default",
+      "timestamp": 1759163062822
+    }
+  ]
+}

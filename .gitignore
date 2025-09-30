@@ -46,8 +46,10 @@ hive-mind-prompt-*.txt
 .claude/.credentials.json
 .claude/.credentials.local.json
 .claude/.cache.json
-.claude/.cache.local.jsonnotebooks/nul
+.claude/.cache.local.json
+
+# Temporary notebook files
+notebooks/nul
 notebooks/*.backup*
 notebooks/*_fix*.py
 notebooks/cleanup_temp_files.py
-notebooks/nul

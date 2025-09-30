@@ -31,9 +31,13 @@ def fix_imports():
             # Cell with extract_features_batch function
             if 'def extract_features_batch' in source:
                 lines = cell['source']
-                if 'from tqdm' not in ''.join(lines):
-                    lines.insert(0, 'from tqdm.notebook import tqdm\n')
-                    fixed_cells.append(f'Cell {i}: Added tqdm import')
+                source_str = ''.join(lines)
+                # Remove old wrong import if exists
+                if 'from tqdm.notebook import tqdm' in source_str:
+                    lines = [l for l in lines if 'from tqdm.notebook import tqdm' not in l]
+                # Add correct import at top
+                lines.insert(0, 'from tqdm.notebook import tqdm\n')
+                fixed_cells.append(f'Cell {i}: Fixed tqdm import')
                 cell['source'] = lines
 
     # Save

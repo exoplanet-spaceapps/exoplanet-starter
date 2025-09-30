@@ -1,0 +1,17 @@
+flux_mean
+flux_std
+flux_median
+flux_mad
+input_period
+input_duration
+input_depth
+input_epoch
+bls_power
+bls_period
+bls_duration
+bls_depth
+tls_power
+tls_period
+tls_duration
+tls_depth
+tls_snr

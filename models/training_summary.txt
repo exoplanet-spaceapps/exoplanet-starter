@@ -1,0 +1,15 @@
+Exoplanet Detection Model Training Summary
+=========================================
+
+Training Date: 2025-09-30 09:34:41.567037
+Total Samples: 30
+Total Features: 17
+Positive Ratio: 50.00%
+
+Cross-Validation Results (n=3 folds):
+  AUC-PR:  0.6244 +/- 0.1438
+  AUC-ROC: 0.5514 +/- 0.2273
+
+Best Model: Fold 1
+  AUC-PR: 0.7100
+  AUC-ROC: 0.8000

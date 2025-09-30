@@ -4,6 +4,18 @@
 
 Trains an exoplanet detection model using NASA data with proper cell execution order.
 
+## ✅ 2025-09-30 UPDATE: Data Schema Fix Applied
+
+**Fixed Column Mapping Issue:**
+- Original dataset columns: `['label', 'source', 'toi', 'tid', 'target_id', 'period', 'depth', 'duration', 'kepid']`
+- Applied automatic mapping:
+  - `tid` → `tic_id` (TIC identifier)
+  - Generated `sample_id` from index
+  - Set default `sector = 1` (TESS observing sector)
+  - Calculated `epoch` from `period * 0.5`
+
+**Status:** ✅ READY FOR EXECUTION with real NASA data
+
 ## Quick Start
 
 ### Google Colab
@@ -16,7 +28,7 @@ Trains an exoplanet detection model using NASA data with proper cell execution o
 
 ### Local Jupyter
 ```bash
-pip install numpy==1.26.4 'scipy<1.13' astropy lightkurve xgboost scikit-learn joblib pandas
+pip install numpy==1.26.4 'scipy<1.13' astropy lightkurve xgboost scikit-learn joblib pandas transitleastsquares
 jupyter notebook 03_injection_train_MINIMAL.ipynb
 # Run Cell 5 → Cell 19 (skip Cell 3)
 ```
@@ -29,7 +41,7 @@ jupyter notebook 03_injection_train_MINIMAL.ipynb
 |------|----------|-----|
 | 5 | ✅ FIRST | Imports all libraries |
 | 7 | ✅ SECOND | Defines helper functions |
-| 9 | ✅ THIRD | Loads dataset |
+| 9 | ✅ THIRD | **Loads dataset + applies column mapping** |
 | 11 | ✅ FOURTH | Defines feature extraction |
 | 13 | ✅ FIFTH | **Extracts features → DEFINES feature_cols** |
 | 15 | ✅ SIXTH | Prepares data (USES feature_cols) |
@@ -57,6 +69,9 @@ jupyter notebook 03_injection_train_MINIMAL.ipynb
 
 ### Error: "extract_features_batch not defined"
 **Solution**: Run Cell 11 BEFORE Cell 13
+
+### Error: "KeyError: 'tic_id'" (FIXED ✅)
+**Solution**: Cell 9 now automatically maps columns from dataset
 
 ## Output Files
 

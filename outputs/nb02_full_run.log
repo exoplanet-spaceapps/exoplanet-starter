@@ -1,0 +1,75 @@
+============================================================
+🔧 载入已下载的资料集
+从 GitHub 自动载入资料（适用于 Colab）
+============================================================
+🌍 环境: 本地环境
+📂 资料目录: ..\data
+❌ 资料目录不存在: ..\data
+💡 请确保已执行 01_tap_download.ipynb 下载资料
+⚠️ 无法载入资料集，将使用预设目标
+
+✅ 资料载入完成，准备分析 3 个目标
+
+✅ 資料載入完成！
+   📂 資料目錄: ..\data
+   🌍 環境: 本地環境
+   📊 載入資料集: 0 個
+   🎯 分析樣本: 3 個目標
+
+準備開始 BLS/TLS 基線分析...
+🎯 分析目標：
+   1. TIC25155310 (TIC 25155310) - TESS
+      正樣本 (行星候選)
+      已知週期: 4.200 天
+      已知深度: 2800 ppm
+
+   2. TIC307210830 (TIC 307210830) - TESS
+      正樣本 (行星候選)
+      已知週期: 3.400 天
+      已知深度: 1500 ppm
+
+   3. KIC11904151 (KIC 11904151) - Kepler
+      正樣本 (行星候選)
+      已知週期: 0.840 天
+      已知深度: 152 ppm
+
+✅ 建立完成，共 3 個分析目標
+
+📡 正在下載 TIC 25155310 的光曲線...
+   找到 39 個光曲線檔案
+   ✅ 下載完成：18278 個資料點
+   🔧 正在進行去趨勢處理...
+   ✅ 去趨勢完成：保留 18278 個資料點
+
+📡 正在下載 TIC 307210830 的光曲線...
+   找到 25 個光曲線檔案
+   ✅ 下載完成：18300 個資料點
+   🔧 正在進行去趨勢處理...
+   ✅ 去趨勢完成：保留 17578 個資料點
+
+📡 正在下載 KIC 11904151 的光曲線...
+   找到 34 個光曲線檔案
+   ✅ 下載完成：43363 個資料點
+   🔧 正在進行去趨勢處理...
+   ✅ 去趨勢完成：保留 43361 個資料點
+
+✅ 成功處理 3 個目標
+
+📊 繪製 TIC25155310 的光曲線對比圖...
+Traceback (most recent call last):
+  File "C:\Users\tingy\Desktop\dev\exoplanet-starter\scripts\run_nb02_standalone.py", line 349, in <module>
+    fig = plot_raw_vs_detrended(data)
+  File "C:\Users\tingy\Desktop\dev\exoplanet-starter\scripts\run_nb02_standalone.py", line 322, in plot_raw_vs_detrended
+    ax3.hist(flux_clean_norm, bins=50, alpha=0.5, color='blue', label='原始', density=True)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tingy\AppData\Roaming\Python\Python313\site-packages\matplotlib\_api\deprecation.py", line 453, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\tingy\AppData\Roaming\Python\Python313\site-packages\matplotlib\__init__.py", line 1524, in inner
+    return func(
+        ax,
+        *map(cbook.sanitize_sequence, args),
+        **{k: cbook.sanitize_sequence(v) for k, v in kwargs.items()})
+  File "C:\Users\tingy\AppData\Roaming\Python\Python313\site-packages\matplotlib\axes\_axes.py", line 7132, in hist
+    m, bins = np.histogram(x[i], bins, weights=w[i], **hist_kwargs)
+              ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: no implementation found for 'numpy.histogram' on types that implement __array_function__: [<class 'astropy.utils.masked.core.MaskedQuantity'>]

@@ -1,0 +1,59 @@
+[2025-09-30 13:37:55] Loading notebook...
+[2025-09-30 13:37:55] Found 27 code cells to execute
+[2025-09-30 13:37:55] ================================================================================
+[2025-09-30 13:37:55] 
+Executing Code Cell 1/27 (Notebook Cell #1)
+[2025-09-30 13:37:55]   First line: # 步驟 0: 安裝套件與修復 NumPy 2.0 相容性 (Colab 環境)
+[2025-09-30 13:37:55]   Status: FAILED
+[2025-09-30 13:37:55]   Error: invalid syntax (<string>, line 10)
+[2025-09-30 13:37:55]   Traceback:
+Traceback (most recent call last):
+  File "C:\Users\tingy\Desktop\dev\exoplanet-starter\scripts\execute_nb02_all_samples.py", line 59, in <module>
+    exec(code, namespace)
+    ~~~~^^^^^^^^^^^^^^^^^
+  File "<string>", line 10
+    !pip install -q numpy==1.26.4 pandas astropy scipy'<1.13' matplotlib scikit-learn
+    ^
+SyntaxError: invalid syntax
+
+[2025-09-30 13:37:55]   Critical error - stopping execution
+[2025-09-30 13:37:55] 
+================================================================================
+[2025-09-30 13:37:55] === EXECUTION SUMMARY ===
+[2025-09-30 13:37:55] Total cells: 27
+[2025-09-30 13:37:55] Successful: 0
+[2025-09-30 13:37:55] Failed: 1
+[2025-09-30 13:37:55] 
+Log file: C:\Users\tingy\Desktop\dev\exoplanet-starter\outputs\nb02_execution_log.txt
+[2025-09-30 13:37:55] Execution complete!
+[2025-09-30 13:38:32] Loading notebook...
+[2025-09-30 13:38:32] Found 27 code cells to execute
+[2025-09-30 13:38:32] ================================================================================
+[2025-09-30 13:38:32] 
+Executing Code Cell 1/27 (Notebook Cell #1)
+[2025-09-30 13:38:32]   First line: # 步驟 0: 安裝套件與修復 NumPy 2.0 相容性 (Colab 環境)
+[2025-09-30 13:38:32]   Status: SKIPPED (Colab-specific code)
+[2025-09-30 13:38:32] 
+Executing Code Cell 2/27 (Notebook Cell #3)
+[2025-09-30 13:38:32]   First line: # 環境設定與依賴安裝（Colab）
+[2025-09-30 13:38:32]   Status: FAILED
+[2025-09-30 13:38:32]   Error: 'cp950' codec can't encode character '\U0001f680' in position 0: illegal multibyte sequence
+[2025-09-30 13:38:32]   Traceback:
+Traceback (most recent call last):
+  File "C:\Users\tingy\Desktop\dev\exoplanet-starter\scripts\execute_nb02_smart.py", line 104, in <module>
+    exec(code, namespace)
+    ~~~~^^^^^^^^^^^^^^^^^
+  File "<string>", line 11, in <module>
+UnicodeEncodeError: 'cp950' codec can't encode character '\U0001f680' in position 0: illegal multibyte sequence
+
+[2025-09-30 13:38:32]   Critical error - stopping execution
+[2025-09-30 13:38:32] 
+================================================================================
+[2025-09-30 13:38:32] === EXECUTION SUMMARY ===
+[2025-09-30 13:38:32] Total cells: 27
+[2025-09-30 13:38:32] Successful: 0
+[2025-09-30 13:38:32] Failed: 1
+[2025-09-30 13:38:32] Skipped: 1
+[2025-09-30 13:38:32] 
+Log file: C:\Users\tingy\Desktop\dev\exoplanet-starter\outputs\nb02_execution_log.txt
+[2025-09-30 13:38:32] Execution complete!

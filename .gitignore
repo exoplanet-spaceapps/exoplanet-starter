@@ -50,3 +50,4 @@ hive-mind-prompt-*.txt
 notebooks/*.backup*
 notebooks/*_fix*.py
 notebooks/cleanup_temp_files.py
+notebooks/nul

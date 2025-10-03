@@ -136,3 +136,4 @@ lint/outputs/
 lint/tmp/
 lint-results*.xml
 .gradle/buildOutputCleanup/buildOutputCleanup.lock
+nul

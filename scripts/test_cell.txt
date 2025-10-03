@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "C:\Users\thc1006\Desktop\dev\exoplanet-starter\scripts\test_cell_content.py", line 285, in <module>
+    print(test_code)
+    ~~~~~^^^^^^^^^^^
+UnicodeEncodeError: 'cp950' codec can't encode character '\U0001f9ea' in position 2: illegal multibyte sequence

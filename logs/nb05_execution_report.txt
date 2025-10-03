@@ -1,0 +1,43 @@
+======================================================================
+NOTEBOOK 05 EXECUTION REPORT - METRICS DASHBOARD
+======================================================================
+
+[SUCCESS] Notebook 05: 13/13 cells executed
+[FILE] notebooks/05_metrics_dashboard.ipynb (with execution_count)
+[TIME] Execution completed at: 2025-09-30 07:33:08
+
+======================================================================
+EVALUATION METRICS COMPARISON
+======================================================================
+
+Test Dataset:
+  - Samples: 500
+  - Positive ratio: 31.00%
+
+Synthetic Injection Model:
+  - PR-AUC: 0.9953
+  - ROC-AUC: 0.9975
+  - Brier Score: 0.0560
+  - P@10: 1.0000
+
+Supervised Learning Model:
+  - PR-AUC: 0.9245
+  - ROC-AUC: 0.9607
+  - Brier Score: 0.1237
+  - P@10: 1.0000
+
+======================================================================
+GENERATED OUTPUT FILES
+======================================================================
+
+Data Files:
+  [OK] notebooks/results/metrics_comparison.csv
+  [OK] notebooks/results/evaluation_summary.json
+
+Visualization Files:
+  [OK] notebooks/results/metrics_comparison.png (50KB)
+  [OK] notebooks/results/performance_curves.png (85KB)
+
+======================================================================
+EXECUTION STATUS: COMPLETE
+======================================================================

@@ -1,7 +1,7 @@
 import React from "react";
 import MountainPng from "../../assets/moon-surface-hd.png";
 
-const Hero = () => {
+const Hero = ({ onGetStarted }) => {
   return (
     <div className=" bg-black/20 h-full">
       <div className="h-full flex justify-center items-center p-4">
@@ -16,9 +16,10 @@ const Hero = () => {
             <button
               data-aos="fade-up"
               data-aos-delay="500"
+              onClick={onGetStarted}
               className="bg-blue-400 text-white hover:bg-blue-500 px-4 py-1 rounded-md duration-200"
             >
-              LEARN MORE
+              Get Started
             </button>
           </div>
           <div></div>

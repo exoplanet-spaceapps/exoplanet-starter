@@ -1,6 +1,29 @@
-.pyc
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Data files - Large files should not be committed
+data/lightcurves/*.h5
+data/*.parquet
+checkpoints/*.parquet
+*.pkl
+*.pickle
+
+# Model files - Use Git LFS or releases for distribution
+models/*.pth
+models/*.json
+models/*.pkl
+models/*.h5
+models/*.onnx
+
+# Results and outputs - Generated files
+results/*.png
+results/*.json
+results/*.csv
+download.log
 
 # Claude Flow generated files
 .claude/settings.local.json
@@ -11,14 +34,6 @@ claude-flow.config.json
 .claude-flow/
 memory/
 coordination/
-memory/claude-flow-data.json
-memory/sessions/*
-!memory/sessions/README.md
-memory/agents/*
-!memory/agents/README.md
-coordination/memory_bank/*
-coordination/subtasks/*
-coordination/orchestration/*
 *.db
 *.db-journal
 *.db-wal
@@ -35,32 +50,15 @@ hive-mind-prompt-*.txt
 .claude/
 .claude-flow/
 claude_code-gemini-mcp/
-memory/
 
-.claude/agents/*
-.claude/commands/*
-.claude/tools/*
-.claude/workflows/*
-.claude/variables/*
-.claude/prompts/*
-.claude/scripts/*
-.claude/flows/*
-.claude/logs/*
-.claude/.auth.json
-.claude/.env
-.claude/.env.local
-.claude/.secrets.json
-.claude/.secrets.local.json
-.claude/.credentials.json
-.claude/.credentials.local.json
-.claude/.cache.json
-.claude/.cache.local.json
-
-# Temporary notebook files
+# Temporary files
 notebooks/nul
 notebooks/*.backup*
 notebooks/*_fix*.py
 notebooks/cleanup_temp_files.py
+nul
+*.tmp
+*.log
 
 # Built application files
 *.apk

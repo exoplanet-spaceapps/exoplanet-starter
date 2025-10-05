@@ -50,7 +50,7 @@ print(f"  Lightcurves: {LIGHTCURVE_DIR}")
 
 # Config
 CONFIG = {
-    'max_workers': 4,
+    'max_workers': 8,
     'max_retries': 3,
     'timeout': 60,
     'save_interval': 20,

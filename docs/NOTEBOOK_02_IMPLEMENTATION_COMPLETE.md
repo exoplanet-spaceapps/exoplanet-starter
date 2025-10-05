@@ -412,3 +412,162 @@ BLS + TLS Mode (run_tls=True):
 *Total implementation time: ~45 minutes*
 *Documentation + Code: ~250 KB*
 *Test coverage: 100% (24/24 passing)*
+
+---
+
+## 📎 Appendix: Colab Enhancement Code Snippets
+
+_Reference: 02_COLAB_ENHANCEMENTS.md (2025-01-29)_
+
+This appendix contains the original enhancement code snippets that were developed during the Colab readiness review. While these have been integrated into the final notebooks, they are preserved here for reference and learning purposes.
+
+### A1. Enhanced Google Drive Setup Cell
+```python
+# Cell 3: Google Drive 掛載與專案設定
+import sys, os
+from pathlib import Path
+
+IN_COLAB = 'google.colab' in sys.modules
+
+if IN_COLAB:
+    from google.colab import drive
+    drive.mount('/content/drive')
+
+    PROJECT_DIR = Path('/content/drive/MyDrive/spaceapps-exoplanet')
+    PROJECT_DIR.mkdir(parents=True, exist_ok=True)
+
+    DATA_DIR = PROJECT_DIR / 'data'
+    OUTPUT_DIR = PROJECT_DIR / 'outputs'
+    CHECKPOINT_DIR = PROJECT_DIR / 'checkpoints'
+    PLOTS_DIR = PROJECT_DIR / 'plots'
+
+    for dir_path in [DATA_DIR, OUTPUT_DIR, CHECKPOINT_DIR, PLOTS_DIR]:
+        dir_path.mkdir(parents=True, exist_ok=True)
+```
+
+### A2. Checkpoint Manager Class
+```python
+import pickle, json
+from datetime import datetime
+
+class CheckpointManager:
+    """Manages checkpoint system for resumable processing"""
+
+    def __init__(self, checkpoint_dir: Path, session_name: str = "bls_analysis"):
+        self.checkpoint_dir = checkpoint_dir
+        self.session_name = session_name
+        self.checkpoint_file = checkpoint_dir / f"{session_name}_checkpoint.pkl"
+        self.metadata_file = checkpoint_dir / f"{session_name}_metadata.json"
+
+    def save_checkpoint(self, data: dict, progress: dict):
+        try:
+            with open(self.checkpoint_file, 'wb') as f:
+                pickle.dump(data, f)
+
+            metadata = {
+                'session_name': self.session_name,
+                'saved_at': datetime.now().isoformat(),
+                'progress': progress,
+                'checkpoint_file': str(self.checkpoint_file)
+            }
+
+            with open(self.metadata_file, 'w') as f:
+                json.dump(metadata, f, indent=2)
+
+            return True
+        except Exception as e:
+            print(f"❌ Checkpoint save failed: {e}")
+            return False
+
+    def load_checkpoint(self):
+        if not self.checkpoint_file.exists():
+            return None, None
+
+        try:
+            with open(self.checkpoint_file, 'rb') as f:
+                data = pickle.load(f)
+
+            if self.metadata_file.exists():
+                with open(self.metadata_file, 'r') as f:
+                    metadata = json.load(f)
+            else:
+                metadata = {}
+
+            return data, metadata
+        except Exception as e:
+            print(f"❌ Checkpoint load failed: {e}")
+            return None, None
+```
+
+### A3. Auto-Retry Mechanism
+```python
+import time
+from functools import wraps
+
+def retry_on_failure(max_retries=3, delay=10, backoff=2):
+    """Auto-retry decorator with exponential backoff"""
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            current_delay = delay
+            for attempt in range(max_retries):
+                try:
+                    return func(*args, **kwargs)
+                except Exception as e:
+                    if attempt < max_retries - 1:
+                        print(f"⚠️ Attempt {attempt + 1}/{max_retries} failed: {e}")
+                        time.sleep(current_delay)
+                        current_delay *= backoff
+                    else:
+                        print(f"❌ All retries failed")
+                        return None
+        return wrapper
+    return decorator
+
+@retry_on_failure(max_retries=3, delay=10)
+def download_lightcurve_with_retry(target_id, mission):
+    search_result = lk.search_lightcurve(
+        target_id, mission=mission,
+        author="SPOC" if mission == "TESS" else None
+    )
+    if len(search_result) == 0:
+        raise ValueError(f"No light curves for {target_id}")
+    return search_result.download_all().stitch()
+```
+
+### A4. Memory Monitoring
+```python
+import psutil, gc
+
+def report_system_status():
+    """Report system resource usage"""
+    process = psutil.Process()
+    mem_info = process.memory_info()
+    mem_gb = mem_info.rss / 1e9
+    cpu_percent = psutil.cpu_percent(interval=1)
+
+    print(f"\n📊 System Status:")
+    print(f"   Memory: {mem_gb:.2f} GB")
+    print(f"   CPU: {cpu_percent:.1f}%")
+
+def cleanup_memory():
+    gc.collect()
+    print("🧹 Memory cleaned")
+```
+
+### A5. Progress Bar Integration
+```python
+from tqdm.notebook import tqdm
+
+for target_idx, target in enumerate(
+    tqdm(targets[start_idx:],
+         desc="🎯 Analyzing targets",
+         initial=start_idx,
+         total=len(targets)),
+    start=start_idx
+):
+    # Processing logic
+    pass
+```
+
+_Note: These snippets have been integrated and enhanced in the final COLAB_ENHANCED version. See the actual notebook for production-ready implementations._
